@@ -1,6 +1,8 @@
 # Changelog
 
-All notable changes to the Salesforce Metadata Exporter extension.
+All notable changes to the Salesforce Field Metadata Exporter extension.
+
+> **Note:** Project renamed from "Salesforce Metadata Exporter" to "Salesforce Field Metadata Exporter" on October 24, 2024 to better reflect its focus on object and field-level metadata.
 
 ## [1.3.0] - 2024-10-24
 

@@ -1,7 +1,7 @@
-// Content script for Salesforce Metadata Exporter
+// Content script for Salesforce Field Metadata Exporter
 // Runs in the context of Salesforce pages
 
-class SalesforceMetadataExporter {
+class SalesforceFieldMetadataExporter {
   constructor() {
     this.sessionId = null;
     this.instanceUrl = null;
@@ -10,7 +10,7 @@ class SalesforceMetadataExporter {
 
   // Initialize and get session (based on Salesforce Inspector approach)
   async initialize() {
-    console.log('Initializing Salesforce Metadata Exporter...');
+    console.log('Initializing Salesforce Field Metadata Exporter...');
 
     // Get the Salesforce host domain
     const sfHost = await this.getSalesforceHost();
@@ -622,11 +622,11 @@ class SalesforceMetadataExporter {
 // Listen for messages from popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'startExport') {
-    const exporter = new SalesforceMetadataExporter();
+    const exporter = new SalesforceFieldMetadataExporter();
     exporter.exportMetadata(request.options);
     sendResponse({ status: 'started' });
   }
   return true;
 });
 
-console.log('Salesforce Metadata Exporter: Content script loaded');
+console.log('Salesforce Field Metadata Exporter: Content script loaded');

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Gradient for a more polished look -->
+  <defs>
+    <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Spiral path -->
+  <path d="M 100 100
+           C 100 80, 120 80, 120 100
+           C 120 130, 80 130, 80 100
+           C 80 60, 140 60, 140 100
+           C 140 150, 60 150, 60 100
+           C 60 40, 160 40, 160 100
+           C 160 170, 40 170, 40 100
+           C 40 20, 180 20, 180 100"
+        fill="none"
+        stroke="url(#spiralGradient)"
+        stroke-width="8"
+        stroke-linecap="round"/>
+</svg>

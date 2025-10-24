@@ -1,8 +1,8 @@
-# Salesforce Metadata Exporter
+# Salesforce Field Metadata Exporter
 
-A Chrome extension to export all Salesforce objects and fields metadata to CSV with advanced filtering capabilities.
+A Chrome extension to export Salesforce object and field metadata to CSV with advanced filtering capabilities.
 
-[![GitHub release](https://img.shields.io/github/v/release/bazztrap/salesforce-metadata-exporter)](https://github.com/bazztrap/salesforce-metadata-exporter/releases/latest)
+[![GitHub release](https://img.shields.io/github/v/release/bazztrap/salesforce-field-metadata-exporter)](https://github.com/bazztrap/salesforce-field-metadata-exporter/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -27,8 +27,8 @@ A Chrome extension to export all Salesforce objects and fields metadata to CSV w
 
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/bazztrap/salesforce-metadata-exporter.git
-   cd salesforce-metadata-exporter
+   git clone https://github.com/bazztrap/salesforce-field-metadata-exporter.git
+   cd salesforce-field-metadata-exporter
    ```
 
 2. **Load in Chrome**
@@ -151,7 +151,7 @@ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for comprehensive solutions.
 
 ### File Structure
 ```
-salesforce-metadata-exporter/
+salesforce-field-metadata-exporter/
 ├── manifest.json          # Extension configuration
 ├── popup.html             # Extension popup UI
 ├── popup.css              # Popup styling
@@ -232,10 +232,10 @@ MIT License - See [LICENSE](LICENSE) for details.
 ## Support
 
 For issues, questions, or suggestions:
-- 🐛 [Report an issue](https://github.com/bazztrap/salesforce-metadata-exporter/issues)
+- 🐛 [Report an issue](https://github.com/bazztrap/salesforce-field-metadata-exporter/issues)
 - 📖 Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 - 📋 Review [CHANGELOG.md](CHANGELOG.md)
-- 💬 Start a [Discussion](https://github.com/bazztrap/salesforce-metadata-exporter/discussions)
+- 💬 Start a [Discussion](https://github.com/bazztrap/salesforce-field-metadata-exporter/discussions)
 
 ## Acknowledgments
 

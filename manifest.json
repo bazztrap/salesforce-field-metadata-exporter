@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Salesforce Metadata Exporter",
+  "name": "Salesforce Field Metadata Exporter",
   "version": "1.3.0",
-  "description": "Export all Salesforce objects and fields metadata to CSV with one click. Filter by user permissions.",
+  "description": "Export Salesforce object and field metadata to CSV with advanced filtering. Filter by user permissions and system objects.",
   "permissions": [
     "cookies",
     "activeTab"

@@ -1,4 +1,4 @@
-// Background service worker for Salesforce Metadata Exporter
+// Background service worker for Salesforce Field Metadata Exporter
 // Based on Salesforce Inspector Reloaded authentication approach
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -60,8 +60,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // Handle installation
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'install') {
-    console.log('Salesforce Metadata Exporter installed');
+    console.log('Salesforce Field Metadata Exporter installed');
   } else if (details.reason === 'update') {
-    console.log('Salesforce Metadata Exporter updated');
+    console.log('Salesforce Field Metadata Exporter updated');
   }
 });

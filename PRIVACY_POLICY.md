@@ -1,10 +1,10 @@
-# Privacy Policy for Salesforce Metadata Exporter
+# Privacy Policy for Salesforce Field Metadata Exporter
 
-**Effective Date**: [Insert Date]
+**Effective Date**: October 24, 2024
 
 ## Overview
 
-Salesforce Metadata Exporter ("the Extension") is committed to protecting your privacy. This privacy policy explains how the Extension handles data.
+Salesforce Field Metadata Exporter ("the Extension") is committed to protecting your privacy. This privacy policy explains how the Extension handles data.
 
 ## Data Collection
 
