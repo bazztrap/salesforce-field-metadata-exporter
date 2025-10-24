@@ -1,108 +1,86 @@
 # Salesforce Metadata Exporter
 
-A simple Chrome extension to export all Salesforce objects and fields metadata to CSV with one click.
+A Chrome extension to export all Salesforce objects and fields metadata to CSV with advanced filtering capabilities.
+
+[![GitHub release](https://img.shields.io/github/v/release/bazztrap/salesforce-metadata-exporter)](https://github.com/bazztrap/salesforce-metadata-exporter/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
 
-- Export all Salesforce objects and their fields to a CSV file
-- **Filter by User Permissions** - Export only objects/fields a specific user can access
-- Filter by Standard and Custom objects
-- Choose between Standard API and Tooling API
-- Include detailed field metadata:
+- 📊 **Export all Salesforce objects and fields** to CSV with one click
+- 👤 **User Permission Filtering** - Export only objects/fields a specific user can access
+- 🔧 **System Object Filtering** - Independent control over Share, Feed, History, ChangeEvent, and Platform Event objects
+- 🎯 **Flexible Filtering** - Standard and Custom object filtering
+- 🔌 **API Options** - Choose between Standard API and Tooling API
+- 📋 **Comprehensive Metadata**:
   - Basic information (Name, Label, Type, Length, etc.)
   - Field attributes (Required, Unique, Createable, etc.)
   - Relationship information (ReferenceTo, RelationshipName, etc.)
   - Picklist values
-  - **User permissions** (Read/Edit access per field when filtering by user)
-- Real-time progress tracking
-- Simple, clean interface
+  - User permissions (Read/Edit access per field when filtering by user)
+- ⚡ **Real-time progress tracking**
+- 🎨 **Clean, simple interface**
 
-## Installation
+## Quick Start
 
-### For Development/Testing
+### Installation
 
-1. **Generate Icon Files**
-
-   Before loading the extension, you need to create PNG icon files from the SVG:
-
+1. **Clone this repository**
    ```bash
-   cd salesforce-metadata-exporter/icons
+   git clone https://github.com/bazztrap/salesforce-metadata-exporter.git
+   cd salesforce-metadata-exporter
    ```
 
-   Follow the instructions in `ICON_INSTRUCTIONS.md` to create:
-   - `icon16.png` (16x16 pixels)
-   - `icon48.png` (48x48 pixels)
-   - `icon128.png` (128x128 pixels)
-
-   Quick option using online converter:
-   - Go to https://cloudconvert.com/svg-to-png
-   - Upload `icon.svg` and convert to each required size
-
-2. **Load Extension in Chrome**
-
+2. **Load in Chrome**
    - Open Chrome and navigate to `chrome://extensions/`
    - Enable "Developer mode" (toggle in top-right corner)
    - Click "Load unpacked"
    - Select the `salesforce-metadata-exporter` folder
    - The extension should now appear in your extensions list
 
-### For Chrome Web Store Publication
+### Usage
 
-To publish this extension to the Chrome Web Store:
-
-1. Create a Chrome Web Store developer account ($5 one-time fee)
-2. Ensure all icon files are properly created
-3. Create a privacy policy (required for extensions requesting permissions)
-4. Prepare promotional images:
-   - Small tile: 440x280 pixels
-   - Large tile: 920x680 pixels
-   - Marquee tile: 1400x560 pixels (optional)
-   - Screenshots: 1280x800 or 640x400 pixels
-5. Zip the extension folder (excluding README and development files)
-6. Upload to Chrome Web Store Developer Dashboard
-7. Fill in the store listing details
-8. Submit for review
-
-## Usage
-
-1. **Navigate to Salesforce**
-   - Open any Salesforce org (production, sandbox, or developer org)
-   - Ensure you are logged in
-
-2. **Open the Extension**
-   - Click the extension icon in the Chrome toolbar
-   - Or use the keyboard shortcut (if configured)
-
-3. **Configure Export Options**
-   - Select object types: Standard Objects, Custom Objects, or both
-   - Choose API type: Standard API or Tooling API
-   - Select which field details to include:
-     - Field Attributes (Required, Unique, etc.)
-     - Relationship Information
-     - Picklist Values
-
-4. **Export**
-   - Click "Export All Metadata"
-   - Watch the progress bar as the extension fetches data
-   - The CSV file will automatically download when complete
-
-5. **Review the CSV**
-   - Open the downloaded CSV file in Excel, Google Sheets, or any spreadsheet application
-   - File naming format: `salesforce_metadata_YYYY-MM-DD.csv`
-   - If filtered by user: `salesforce_metadata_YYYY-MM-DD_username.csv`
+1. **Navigate to Salesforce** - Open any Salesforce org (production, sandbox, or developer)
+2. **Click the extension icon** in the Chrome toolbar
+3. **Configure export options**:
+   - Select object types (Standard, Custom, or both)
+   - Choose API type (Standard or Tooling)
+   - Enable system object filtering (optional)
+   - Enable user permission filtering (optional)
+4. **Click "Export All Metadata"**
+5. **Download completes** - CSV file automatically downloads
 
 ## Advanced Features
 
-### Filter by User Permissions (NEW in v1.1.0)
+### System Object Filtering (v1.3.0)
 
-Export metadata filtered by a specific user's access rights - perfect for security audits and user access reviews!
+Filter out system objects independently on ANY export:
+
+```
+✅ Export all objects WITHOUT system objects
+✅ Export user-filtered objects WITHOUT system objects
+✅ Export all objects WITH system objects (disable filter)
+```
+
+**Configurable filters:**
+- Share objects (AccountShare, ContactShare, etc.)
+- Feed objects (AccountFeed, CaseFeed, etc.)
+- History objects (AccountHistory, etc.)
+- Change Data Capture (ChangeEvent)
+- Platform Events (__e suffix)
+
+See [SYSTEM_FILTER_OPTIONS.md](SYSTEM_FILTER_OPTIONS.md) for details.
+
+### User Permission Filtering (v1.1.0)
+
+Export metadata filtered by a specific user's access rights - perfect for security audits!
 
 **How to use:**
 1. Check "Filter by User Permissions"
 2. Enter a Salesforce username (e.g., `john.doe@company.com`)
 3. Click "Export All Metadata"
 
-The export will:
+**The export will:**
 - Only include objects the user can read
 - Only include fields the user can read
 - Add permission columns showing Read/Edit access
@@ -111,92 +89,51 @@ The export will:
 **Use cases:**
 - Security audits - "What can this user access?"
 - Troubleshooting - "Why can't Sarah see this field?"
-- Compliance - "Document PII field access"
+- Compliance - Document PII field access
 - User access reviews
 - Role comparisons
 
-**System Object Filtering (NEW in v1.2.0):**
-- Control which system objects to include/exclude
-- Toggle filters for Share, Feed, History, ChangeEvent, Platform Events
-- Advanced options for granular control
-- Default: Filters out all system objects for clean exports
-- Optional: Include specific types as needed
-
-**See detailed documentation**:
-- [USER_PERMISSION_FILTER.md](USER_PERMISSION_FILTER.md) - Permission filtering guide
-- [SYSTEM_FILTER_OPTIONS.md](SYSTEM_FILTER_OPTIONS.md) - System object filtering guide
+See [USER_PERMISSION_FILTER.md](USER_PERMISSION_FILTER.md) for detailed documentation.
 
 ## CSV Output Format
 
-The exported CSV includes the following columns:
+### Always Included
+- ObjectName, ObjectLabel, IsCustomObject
+- FieldName, FieldLabel, Type
+- Length, Precision, Scale
 
-### Always Included:
-- **ObjectName**: API name of the object
-- **ObjectLabel**: Display label of the object
-- **IsCustomObject**: Yes/No indicating if it's a custom object
-- **FieldName**: API name of the field
-- **FieldLabel**: Display label of the field
-- **Type**: Field data type (text, number, picklist, etc.)
-- **Length**: Maximum length for text fields
-- **Precision**: Total digits for number fields
-- **Scale**: Decimal places for number fields
+### Optional (Field Attributes)
+- Required, Unique, ExternalId
+- Createable, Updateable, Filterable, Sortable
+- Calculated, DefaultValue
 
-### Optional (Field Attributes):
-- **Required**: Whether the field is required
-- **Unique**: Whether the field must be unique
-- **ExternalId**: Whether it's marked as external ID
-- **Createable**: Can be set when creating records
-- **Updateable**: Can be modified after creation
-- **Filterable**: Can be used in WHERE clauses
-- **Sortable**: Can be used in ORDER BY
-- **Calculated**: Formula field
-- **DefaultValue**: Default value if any
+### Optional (Relationships)
+- ReferenceTo, RelationshipName
+- CascadeDelete, RestrictedDelete
 
-### Optional (Relationships):
-- **ReferenceTo**: Object(s) this field references
-- **RelationshipName**: Name used for relationship queries
-- **CascadeDelete**: Child records deleted with parent
-- **RestrictedDelete**: Prevents deletion if children exist
+### Optional (Picklist)
+- PicklistValues, RestrictedPicklist
 
-### Optional (Picklist Fields):
-- **PicklistValues**: All available picklist values (semicolon-separated)
-- **RestrictedPicklist**: Whether custom values are allowed
-
-### When Filtering by User (v1.1.0+):
-- **UserCanRead**: Whether the user can read this field (Yes/No)
-- **UserCanEdit**: Whether the user can edit this field (Yes/No)
-- **ObjRead**: Object-level read permission (Yes/No)
-- **ObjCreate**: Object-level create permission (Yes/No)
-- **ObjEdit**: Object-level edit permission (Yes/No)
-- **ObjDelete**: Object-level delete permission (Yes/No)
-- **ObjViewAll**: Object-level "View All" permission (Yes/No)
-- **ObjModifyAll**: Object-level "Modify All" permission (Yes/No)
-- **FilteredForUser**: The username this export was filtered for
-
-## Permissions Explained
-
-This extension requires the following permissions:
-
-- **cookies**: To read the Salesforce session cookie for API authentication
-- **activeTab**: To interact with the current Salesforce page
-- **host_permissions**: To make API calls to Salesforce domains
-
-Your Salesforce credentials are never stored or transmitted outside of Salesforce. The extension only uses your existing browser session.
+### When Filtering by User
+- UserCanRead, UserCanEdit (field-level)
+- ObjRead, ObjCreate, ObjEdit, ObjDelete (object-level)
+- ObjViewAll, ObjModifyAll (object-level)
+- FilteredForUser (metadata)
 
 ## Troubleshooting
 
-### Quick Fixes
+### Common Issues
 
 **Error 401 (Authentication Failed):**
 1. Refresh the Salesforce page
 2. Reload the extension at `chrome://extensions/`
 3. Log out and back into Salesforce
-4. See [detailed 401 troubleshooting](TROUBLESHOOTING.md#error-401-api-call-failed)
+4. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed solutions
 
 **"Could not connect to Salesforce page":**
 - Refresh the Salesforce page (F5)
-- Reload the extension at `chrome://extensions/`
-- Make sure you're on an actual Salesforce page, not the login page
+- Reload the extension
+- Ensure you're on an actual Salesforce page, not the login page
 
 **"Could not retrieve Salesforce session":**
 - Log out and back into Salesforce
@@ -206,20 +143,44 @@ Your Salesforce credentials are never stored or transmitted outside of Salesforc
 **Export taking too long:**
 - Uncheck "Include Standard Objects" for faster export
 - Large orgs (500+ objects) may take 10-20 minutes
-- Progress bar should keep moving - if stuck, see [troubleshooting guide](TROUBLESHOOTING.md)
+- Enable system object filtering to reduce objects
 
-### Full Troubleshooting Guide
+See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for comprehensive solutions.
 
-For detailed solutions to common problems, see **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
+## Development
 
-Topics covered:
-- Authentication errors (401)
-- Session detection issues
-- API access problems
-- Export hangs or failures
-- CSV download issues
-- Debugging tips
-- Alternative solutions
+### File Structure
+```
+salesforce-metadata-exporter/
+├── manifest.json          # Extension configuration
+├── popup.html             # Extension popup UI
+├── popup.css              # Popup styling
+├── popup.js               # Popup logic
+├── content.js             # Salesforce page interaction
+├── background.js          # Service worker for cookies
+├── icons/                 # Extension icons
+│   ├── icon.svg          # Source SVG
+│   ├── icon16.png        # 16x16 icon
+│   ├── icon48.png        # 48x48 icon
+│   └── icon128.png       # 128x128 icon
+└── *.md                  # Documentation
+```
+
+### Building from Source
+
+1. Clone the repository
+2. Load in Chrome as unpacked extension
+3. Make modifications as needed
+4. Test thoroughly in different Salesforce orgs
+
+### Contributing
+
+Contributions are welcome! To contribute:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## Technical Details
 
@@ -233,49 +194,14 @@ Topics covered:
   - `*.visualforce.com`
   - `*.salesforce-setup.com`
 
-## Privacy
+## Permissions
 
-This extension:
-- Does NOT collect any user data
-- Does NOT send data to external servers
-- Does NOT store credentials
-- Only accesses Salesforce APIs using your existing browser session
-- All processing happens locally in your browser
+This extension requires:
+- **cookies**: To read the Salesforce session cookie for API authentication
+- **activeTab**: To interact with the current Salesforce page
+- **host_permissions**: To make API calls to Salesforce domains
 
-## Development
-
-### File Structure
-```
-salesforce-metadata-exporter/
-├── manifest.json          # Extension configuration
-├── popup.html            # Extension popup UI
-├── popup.css             # Popup styling
-├── popup.js              # Popup logic
-├── content.js            # Salesforce page interaction
-├── background.js         # Service worker
-├── icons/                # Extension icons
-│   ├── icon.svg         # Source SVG
-│   ├── icon16.png       # 16x16 icon
-│   ├── icon48.png       # 48x48 icon
-│   └── icon128.png      # 128x128 icon
-└── README.md            # This file
-```
-
-### Building from Source
-
-1. Clone or download this repository
-2. Generate icon files (see Installation section)
-3. Load in Chrome as unpacked extension
-4. Make modifications as needed
-5. Test thoroughly in different Salesforce orgs
-
-### Contributing
-
-To contribute to this project:
-1. Test the extension in various Salesforce environments
-2. Report bugs or suggest features
-3. Submit improvements to the code
-4. Help with documentation
+**Privacy:** Your Salesforce credentials are never stored or transmitted outside of Salesforce. The extension only uses your existing browser session. See [PRIVACY_POLICY.md](PRIVACY_POLICY.md).
 
 ## Known Limitations
 
@@ -285,41 +211,37 @@ To contribute to this project:
 - Some field metadata may vary between API versions
 - Requires active Salesforce session
 
-## Roadmap
+## Version History
 
-Potential future enhancements:
-- [ ] Export to Excel format with multiple sheets
-- [ ] Filter by specific object types or patterns
-- [ ] Include custom metadata types
-- [ ] Export permission sets and profiles
-- [ ] Export validation rules and formulas
-- [ ] Support for bulk API for faster exports
-- [ ] Scheduled/automated exports
-- [ ] Compare metadata between orgs
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
+
+### Recent Releases
+
+- **v1.3.0** (2024-10-24) - Decoupled system filtering from user permission filtering
+- **v1.2.1** (2024-10-23) - Critical hotfix for infinite loop and zero objects bug
+- **v1.2.0** (2024-10-22) - Added granular system object filter controls
+- **v1.1.1** (2024-10-21) - Fixed permission filtering logic
+- **v1.1.0** (2024-10-20) - Added user permission filtering feature
+- **v1.0.1** (2024-10-19) - Fixed 401 authentication errors
+- **v1.0.0** (2024-10-18) - Initial release
 
 ## License
 
-MIT License - Feel free to use and modify as needed.
+MIT License - See [LICENSE](LICENSE) for details.
 
 ## Support
 
 For issues, questions, or suggestions:
-- Check the Troubleshooting section above
-- Review Chrome extension logs (`chrome://extensions` → Details → Inspect views)
-- Check Salesforce API limits and permissions
-
-## Version History
-
-### 1.0.0 (Initial Release)
-- Export all objects and fields to CSV
-- Configurable export options
-- Progress tracking
-- Support for Standard and Tooling APIs
-- Comprehensive field metadata
+- 🐛 [Report an issue](https://github.com/bazztrap/salesforce-metadata-exporter/issues)
+- 📖 Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- 📋 Review [CHANGELOG.md](CHANGELOG.md)
+- 💬 Start a [Discussion](https://github.com/bazztrap/salesforce-metadata-exporter/discussions)
 
 ## Acknowledgments
 
 Built for Salesforce administrators, developers, and architects who need quick access to org metadata.
+
+Authentication approach inspired by [Salesforce Inspector Reloaded](https://github.com/tprouvot/Salesforce-Inspector-reloaded).
 
 ---
 
